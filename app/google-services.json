@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "217619808312",
+    "firebase_url": "https://callmanager-fbb0b.firebaseio.com",
+    "project_id": "callmanager-fbb0b",
+    "storage_bucket": "callmanager-fbb0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217619808312:android:44d555856c1da2523e26cd",
+        "android_client_info": {
+          "package_name": "com.example.callmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217619808312-ieuvg9fho4tqd7hnp3vg2952bc251iun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.callmanager",
+            "certificate_hash": "449181948ef89e05e9dd1aca10356e35f6a15a7e"
+          }
+        },
+        {
+          "client_id": "217619808312-r87khv5ri2p7hhvpjsgn32ea8ils17sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEPf9Xsi8fpHMsgsTvjsy3UvLWvRi3AhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217619808312-r87khv5ri2p7hhvpjsgn32ea8ils17sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
