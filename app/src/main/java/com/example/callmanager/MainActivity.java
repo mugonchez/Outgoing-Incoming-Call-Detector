@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        checkPermission();
 
         emailView = findViewById(R.id.email);
         phoneView = findViewById(R.id.phone_number);
@@ -65,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
             }
 
-            Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-            startActivity(myIntent);
 
             if (getApplicationContext().checkSelfPermission(Manifest.permission.PROCESS_OUTGOING_CALLS)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -116,30 +113,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE) {
-            if (!Settings.canDrawOverlays(this)) {
-                // You don't have permission
-                checkPermission();
-            } else {
-                // Do as per your logic
-            }
-
-        }
-
-    }
-
-    public void checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(this)) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
-            }
-        }
-    }
+//    public void checkPermission() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (!Settings.canDrawOverlays(this)) {
+//                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                        Uri.parse("package:" + getPackageName()));
+//                startActivityForResult(intent, ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE);
+//            }
+//        }
+//    }
 }

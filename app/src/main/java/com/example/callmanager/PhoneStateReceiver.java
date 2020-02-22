@@ -51,48 +51,6 @@ public class PhoneStateReceiver extends BroadcastReceiver {
             if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)){
                 Toast.makeText(context,"Incoming Call State",Toast.LENGTH_SHORT).show();
                 Toast.makeText(context,"Ringing State Number is -"+incomingNumber,Toast.LENGTH_LONG).show();
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        Query query = databaseReference.orderByChild("phone_number").equalTo(incomingNumber);
-                        query.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                if(dataSnapshot.exists()){
-                                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                                        String mail = (String)snapshot.child("email").getValue();
-                                        Intent intent1 = new Intent(context, MainActivity.class);
-                                        intent1.putExtra("PHONE_NUMBER",incomingNumber);
-                                        intent1.putExtra("EMAIL", mail);
-                                        context.startActivity(intent1);
-                                    }
-                                }else {
-                                    Toast toast = Toast.makeText(context,"Sorry We couldn\'t find this user in our database", Toast.LENGTH_LONG);
-                                    toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
-                                    View view = toast.getView();
-                                    view.getBackground().setColorFilter(Color.parseColor("#EF5350"), PorterDuff.Mode.SRC_IN);
-                                    TextView textView = view.findViewById(android.R.id.message);
-                                    textView.setTextColor(Color.WHITE);
-                                    toast.show();
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Toast toast = Toast.makeText(context,"Error due to "+ databaseError.getMessage(), Toast.LENGTH_LONG);
-                                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
-                                View view = toast.getView();
-                                view.getBackground().setColorFilter(Color.parseColor("#EF5350"), PorterDuff.Mode.SRC_IN);
-                                TextView textView = view.findViewById(android.R.id.message);
-                                textView.setTextColor(Color.WHITE);
-                                toast.show();
-
-                            }
-                        });
-
-                    }
-                }, 1000);
             }
             if ((state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK))){
                 Toast.makeText(context,"Call Received State",Toast.LENGTH_SHORT).show();
